@@ -1,0 +1,19 @@
+{
+  "name": "dilithium",
+  "version": "1.0.0",
+  "authors": [
+    "Jon Gravois <jongravois@gmail.com>"
+  ],
+  "description": "Internal package of packages without installers",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "pages"
+  ]
+}

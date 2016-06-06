@@ -1,0 +1,45 @@
+// TABS
+
+.nav-tabs {
+    border: 0;
+    @extend .z-depth-1;
+    .nav-item + .nav-item {
+        margin-left: 0;
+    }
+    .nav-link {
+        border: 0;
+        
+    }
+}
+
+.nav-tabs {
+  .nav-link.active,
+  .nav-item.open .nav-link {
+    @include plain-hover-focus {
+      background-color: inherit;
+      border-bottom: 2px solid $primary-color;
+    }
+  }  
+}
+
+.tabs-5 li {
+    width: 20%;
+    margin-left: 0;
+}
+
+.tabs-4 li {
+    width: 25%;
+}
+
+.tabs-3 li {
+    width: 33.3%;
+}
+
+.tabs-2 li {
+    width: 50%;
+    
+}
+
+.tabs-5, .tabs-4, .tabs-3, .tabs-2 {
+    text-align: center;
+}

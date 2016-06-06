@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Step From Wizard - 16 - modal window</title>
+
+    <script src="plugins/jquery-2.1.4.min.js"></script>
+
+    <!-- bootstrap for better look example, but not necessary -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Step Form Wizard plugin -->
+    <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+    <script src="step-form-wizard/js/step-form-wizard.js"></script>
+
+    <!-- nicer scroll in steps -->
+    <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#wizard_example").stepFormWizard();
+        })
+        $(window).load(function () {
+            /* only if you want use mcustom scrollbar */
+            $(".sf-step").mCustomScrollbar({
+                theme: "dark-3",
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        });
+    </script>
+
+    <style>
+        pre {margin: 45px 0 60px;}
+        h1 {margin: 60px 0 60px 0;}
+        p {margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="site-index">
+        <div class="body-content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1>Modal window</h1>
+
+                        <p class="lead">
+                            Your modal div have to be outside of the wizard because themes are using position: relative and
+                            modal window doesn't show properly inside the wizard. But of course you still can have a
+                            trigger of your modal inside the wizard.
+                        </p>
+                    </div>
+                    <form id="wizard_example" action="">
+                        <fieldset>
+                            <legend>Basic information</legend>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                            Launch modal
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+
+                                </div>
+                                <div class="col-lg-12">
+                                    In publishing and graphic design, lorem ipsum is common placeholder text used to
+                                    demonstrate the graphic elements of a document or visual presentation, such as web
+                                    pages, typography, and graphical layout. It is a form of "greeking".
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Condition</legend>
+                            In publishing and graphic design, lorem ipsum is common placeholder text used to demonstrate
+                            the graphic elements of a document or visual presentation, such as web pages, typography,
+                            and graphical layout. It is a form of "greeking".
+                            Even though using "lorem ipsum" often arouses curiosity due to its resemblance to classical
+                            Latin, it is not intended to have meaning. Where text is visible in a document, people tend
+                            to focus on the textual content rather than upon overall presentation, so publishers use
+                            lorem ipsum when displaying a typeface or design in order to direct the focus to
+                            presentation. "Lorem ipsum" also approximates a typical distribution of letters in English.
+                        </fieldset>
+                        <fieldset>
+                            <legend>Final step</legend>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>
+                                        Even though using "lorem ipsum" often arouses curiosity due to its resemblance
+                                        to classical Latin, it is not intended to have meaning. Where text is visible in
+                                        a document, people tend to focus on the textual content rather than upon overall
+                                        presentation, so publishers use lorem ipsum when displaying a typeface or design
+                                        in order to direct the focus to presentation. "Lorem ipsum" also approximates a
+                                        typical distribution of letters in English.
+                                    </p>
+                                </div>
+                                <noscript>
+                                    <input class="nocsript-finish-btn sf-right nocsript-sf-btn" type="submit"
+                                           name="no-js-clicked" value="finish"/>
+                                </noscript>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 up-20">
+                <pre>$(document).ready(function () {
+    $("#wizard_example").stepFormWizard();
+})
+                </pre>
+                </div>
+            </div>
+
+            <!-- MODAL BOX -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            ... text ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MODAL BOX -->
+
+
+            <footer class="footer">
+                <div class="container">
+                    <p class="pull-left">© ajoke.cz/wizard 2015</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

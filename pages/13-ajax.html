@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Step From Wizard - 13 - Ajax</title>
+
+    <script src="plugins/jquery-2.1.4.min.js"></script>
+
+    <!-- bootstrap for better look example, but not necessary -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+
+    <!-- Step Form Wizard plugin -->
+    <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+    <script src="step-form-wizard/js/step-form-wizard.js"></script>
+
+    <!-- nicer scroll in steps -->
+    <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script>
+        var sfw;
+        var next_loading = false; // is using for prevent if ajax is executing, but you can also use method activeNext
+        $(document).ready(function () {
+            sfw = $("#wizard_example").stepFormWizard({
+                theme: 'sun',
+                height: 'auto',
+                linkNav: 'prev',
+                showNavNumbers: false,
+                onNext: function(from, data) {
+                    if(next_loading) { // test if ajax is executing
+                        return false;
+                    }
+                    if(data !== undefined && data.done) { // if ajax is done, than data.done is set to true
+                        return true;
+                    }
+                    sfw.addSpinner('next'); // add spinner to next button
+                    next_loading = true; // to prevent stack of ajax requests if user hasn't patience
+                    $.get('https://www.googleapis.com/books/v1/volumes?q=' + $('#book').val(), function( data ) {
+                        $('#books').html('');
+                        $.each(data.items, function(index, value) {
+                            $('#books').append(value.volumeInfo.title + '<br/>')
+                        })
+                        sfw.addSpinner('next', false);  // remove spinner
+                        next_loading = false; // allow next step
+                        sfw.next(false, {done: true}) // go to next step, additional data will be in next callback
+                    })
+                    return false;
+                }
+            });
+            sfw.activeNext(false); // disable next button
+            $("#wizard_example").on('keyup', '#book', function() {
+                if($(this).val() != "") {
+                    sfw.activeNext(true);
+                } else {
+                    sfw.activeNext(false); // disable next button
+                    sfw.activeStep(1, false); // deactive next step
+                }
+            })
+        })
+        $(window).load(function () {
+            /* only if you want use mcustom scrollbar */
+            $(".sf-step").mCustomScrollbar({
+                theme: "dark-3",
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        });
+    </script>
+
+    <style>
+        pre {margin: 45px 0 60px;}
+        h2 {margin: 60px 0 30px 0;}
+        p {margin-bottom: 10px;}
+        .finish-btn {display: none !important;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="site-index">
+        <div class="body-content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1>Loading data step via AJAX</h1>
+
+                        <p class="lead">
+
+                        </p>
+                    </div>
+
+                    <form id="wizard_example" action="">
+                        <fieldset>
+                            <legend>Search in Google Books</legend>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="book">Book</label>
+                                        <input type="email" class="form-control" id="book"
+                                               name="book" placeholder="Enter name of book">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Result</legend>
+                            <div id="books"></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 up-20">
+                <pre>var sfw;
+var next_loading = false;
+$(document).ready(function () {
+    sfw = $("#wizard_example").stepFormWizard({
+        theme: 'sun',
+        height: 'auto',
+        linkNav: 'prev',
+        onNext: function(from, data) {
+            if(next_loading) { // test if ajax is executing
+                return false;
+            }
+            if(data !== undefined && data.done) { // if ajax is done, than data.done is set to true
+                return true;
+            }
+            sfw.addSpinner('next'); // add spinner to next button
+            next_loading = true; // to prevent stack of ajax requests if user hasn't patience
+            $.get('https://www.googleapis.com/books/v1/volumes?q=' + $('#book').val(), function( data ) {
+                $('#books').html('');
+                $.each(data.items, function(index, value) {
+                    $('#books').append(value.volumeInfo.title + '<br/>')
+                })
+                sfw.addSpinner('next', false);  // remove spinner
+                next_loading = false; // allow next step
+                sfw.next(false, {done: true}) // go to next step, additional data will be in next callback
+            })
+            return false;
+        }
+    });
+    sfw.activeNext(false); // disable next button
+    $("#wizard_example").on('keyup', '#book', function() {
+        if($(this).val() != "") {
+            sfw.activeNext(true);
+        } else {
+            sfw.activeNext(false); // disable next button
+            sfw.activeStep(1, false); // deactive next step
+        }
+    })
+})
+                </pre>
+                </div>
+            </div>
+
+
+            <footer class="footer">
+                <div class="container">
+                    <p class="pull-left">© ajoke.cz/wizard 2015</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

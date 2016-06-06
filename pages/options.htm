@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://wizard.ts/index.php/examples -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Step Form Wizard 2 - Options</title>
+    <link rel="stylesheet" href="css/verity-wizard.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="plugins/highlight/styles/github.css" type="text/css" media="screen, projection">
+    <script src="plugins/jquery-2.1.1.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/highlight/highlight.pack.js"></script>
+    <script src="js/verity-wizard.js"></script>
+    <script src="js/example.js"></script>
+
+</head>
+<body>
+<div class="container">
+<div class="site-index">
+
+<div class="jumbotron">
+    <h1>Step Form Wizard 2 - Options</h1>
+
+    <p class="lead">Here is all options of Step Form Wizard plugin.</p>
+</div>
+
+<div class="body-content">
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="body-content">
+            <h2>Options</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Values</th>
+                    <th>Default</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>duration</td>
+                    <td>Length of animation time between steps.</td>
+                    <td>Number</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>transition</td>
+                    <td>Animation function.</td>
+                    <td>slide | fade | 3d-cube | none</td>
+                    <td>'slide'</td>
+                </tr>
+                <tr>
+                    <td>linkNav</td>
+                    <td>Navigation as a link, simple text or clickable are only previous steps.</td>
+                    <td>true | false | 'prev'</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>showNav</td>
+                    <td>Position of navigation. You can also hide navigation. true == 'top'</td>
+                    <td>'top' | 'right' | 'bottom' | 'left' | true | false</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>showNavNumbers</td>
+                    <td>If numbers in navigation aren't necessary, you can hide them.</td>
+                    <td>true | false</td>
+                    <td>true</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>showLegend</td>
+                    <td>Show headline legend on top of the content.</td>
+                    <td>true | false</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>showButtons</td>
+                    <td>Show navigation buttons (Next, Prev, Finish) at bottom of the wizard.</td>
+                    <td>true | false</td>
+                    <td>true</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>nextBtn</td>
+                    <td>Template for next button. Class "next-btn" is necessary, other classes can be replaced.</td>
+                    <td>Javascript with HTML as default.</td>
+                    <td><pre><code>$('&lt;a class="next-btn sf-right sf-btn" href="#">NEXT&lt;/a>')</code></pre></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>prevBtn</td>
+                    <td>Template for previous button. Class "prev-btn" is necessary, other classes can be replaced.</td>
+                    <td>Javascript with HTML as default.</td>
+                    <td><pre><code>$('&lt;a class="prev-btn sf-left sf-btn" href="#">PREV&lt;/a>')</code></pre></td>
+                </tr>
+                <tr>
+                    <td>finishBtn</td>
+                    <td>Template for finish button. Class "finish-btn" is necessary, other classes can be replaced.</td>
+                    <td>Javascript with HTML as default.</td>
+                    <td><pre><code>$('&lt;input class="finish-btn sf-right sf-btn" type="submit" value="finish"/>')</code></pre></td>
+                </tr>
+                <tr>
+                    <td>onNext</td>
+                    <td>Function for any issue of your choice (for example control of validation.</td>
+                    <td>Name of function or anonymous function. First parameter is a number of actual step, second parameter is jquery wrap for wizard.</td>
+                    <td>function(from, data) {}</td>
+                </tr>
+                <tr>
+                    <td>onPrev</td>
+                    <td>Function for any issue of your choice (for example control of validation.</td>
+                    <td>Name of function or anonymous function. First parameter is a number of actual step, second parameter is jquery wrap for wizard.</td>
+                    <td>function(from, data) {}</td>
+                </tr>
+                <tr>
+                    <td>onFinish</td>
+                    <td>Function for any issue of your choice (for example control of validation.</td>
+                    <td>Name of function or anonymous function. First parameter is a number of actual step, second parameter is jquery wrap for wizard.</td>
+                    <td>function(from, data) {}</td>
+                </tr>
+                <tr>
+                    <td>onSlideChanged</td>
+                    <td>Function for any issue of your choice (for example control of validation.</td>
+                    <td>Name of function or anonym function. First parameter is a number of actual step, second is the number of coming step.</td>
+                    <td>function(to, data) {}</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>Height can be little tricky and you have 4 options to handle it. You can't use transition 3d-cube and height auto.</td>
+                    <td>'first' (height as first step) | 'auto' (flexible height) | 'tallest' (height as tallest step) | number (height in pixels)</td>
+                    <td>'first'</td>
+                </tr>
+                <tr>
+                    <td>theme</td>
+                    <td>Graphics design for wizard</td>
+                    <td>'sea' | 'sky' | 'simple' | 'circle' | 'sun'</td>
+                    <td>'sea'</td>
+                </tr>
+                <tr>
+                    <td>markPrevSteps</td>
+                    <td>Visually different previous steps</td>
+                    <td>false | true</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>startStep</td>
+                    <td>Starting step after wizard is loaded </td>
+                    <td>Number (counting from 0)</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>rtl</td>
+                    <td>Right to left direction</td>
+                    <td>true | false</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>stepElement</td>
+                    <td>Element or class for steps</td>
+                    <td>string</td>
+                    <td>'fieldset'</td>
+                </tr>
+                <tr>
+                    <td>stepNameElement</td>
+                    <td>Element or class which is a wrap for navigation label</td>
+                    <td>string</td>
+                    <td>'legend'</td>
+                </tr>
+                <tr>
+                    <td>disableEnter</td>
+                    <td>Disables transition when enter is pressed on some input</td>
+                    <td>true | false</td>
+                    <td>false</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2 style="margin-top: 60px;">Trigger events</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th style="width: 110px;">Name</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>sf-loaded</td>
+                    <td>Is triggered after wizard is initialized.</td>
+                    <td><pre><code>$("#wizard_example_1").on('sf-loaded', function(e) {
+    alert('Step form wizard was loaded');
+})</code></pre></td>
+                </tr>
+                <tr>
+                    <td>sf-step-before</td>
+                    <td>Is triggered before transition to next/before <br/> step and still can be interrupted.</td>
+                    <td><pre><code>$("#wizard_example_1").on('sf-step-before', function(e, from, to, data) {
+    alert('Prepare for next step! Or not if you call preventDefault');
+    e.preventDefault(); // this you have to call if you need to interrupt transition to next step
+})</code></pre></td>
+                </tr>
+                <tr>
+                    <td>sf-step-after</td>
+                    <td>Is triggered after transition to next/before <br/> step is done.</td>
+                    <td><pre><code>$("#wizard_example_1").on('sf-step-after', function(e, to, data) {
+    alert('End of transition');
+})</code></pre></td>
+                </tr>
+                <tr>
+                    <td>sf-finish</td>
+                    <td>Is triggered after transition to next/before <br/> step was done.</td>
+                    <td><pre><code>$("#wizard_example_1").on('sf-finish', function(e, from, data) {
+    alert('Sending form to process or not?');
+    e.preventDefault(); // this you have to call if you need to interrupt submit form
+})</code></pre></td>
+                </tr>
+            </table>
+            <h3>What is the difference between options onNext/onPrev and event sf-step-before</h3>
+            <p>
+                There are a few differences. You can see it in example 7. Method
+                onNext is executed before every step, that means if you are on step
+                one and click to step five, then onNext is executed four times on each
+                intermediate step and event sf-before-step only once. And another
+                difference is that onNext is executed only if you go forward, but
+                sf-before-step is executed even if you go back.
+            </p>
+
+            <h2 style="margin-top: 60px;">API Methods</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th style="width: 220px;">Name</th>
+                    <th>Description</th>
+                    <th>Return</th>
+                    <th style="width: 400px;">Example</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>next(ifLastThenSubmit, data)</td>
+                    <td>For shifting step to next one. It will submit form if you call method on last step and first parameter is set to true. Data will be sent to events.</td>
+                    <td>true | false</td>
+                    <td><pre><code>var sfw = $("#wizard_example").stepFormWizard();
+sfw.next();</code></pre></td>
+                </tr>
+                <tr>
+                    <td>prev(data)</td>
+                    <td>For shifting step to previous one. Data will be sent to events.</td>
+                    <td>true | false</td>
+                    <td><pre><code>var sfw = $("#wizard_example").stepFormWizard();
+sfw.prev();</code></pre></td>
+                </tr>
+                <tr>
+                    <td>finish(data)</td>
+                    <td>For submitting form. Data will be sent to events.</td>
+                    <td>true | false</td>
+                    <td><pre><code>var sfw = $("#wizard_example").stepFormWizard();
+sfw.finish();</code></pre></td>
+                </tr>
+                <tr>
+                    <td>goTo(index, data)</td>
+                    <td>Go to specific index.</td>
+                    <td>true | false</td>
+                    <td><pre><code>var sfw = $("#wizard_example").stepFormWizard();
+sfw.goTo(2); // movo to third step</code></pre></td>
+                </tr>
+                <tr>
+                    <td>refresh</td>
+                    <td>If you need redrawing of wizard after pictures or font were loaded or something changed height or width of wizard.</td>
+                    <td>undefined</td>
+                    <td><pre><code>var sfw = $("#wizard_example").stepFormWizard();
+sfw.refresh();</code></pre></td>
+                </tr>
+                <tr>
+                    <td>activeNext(value, valueForFinishButton)</td>
+                    <td>Activate or deactivate next button and activate or deactivate finish button </td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.activeNext(false, false)
+// deactivate next and finish</code></pre></td>
+                </tr>
+                <tr>
+                    <td>activePrev(value)</td>
+                    <td>Activate or deactivate prev button</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.activePrev(false) // deactivate prev</code></pre></td>
+                </tr>
+                <tr>
+                    <td>activeFinish(value)</td>
+                    <td>Activate or deactivate finish button</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.activeFinish(true) // activate finish</code></pre></td>
+                </tr>
+                <tr>
+                    <td>activeStep(index, value)</td>
+                    <td>Activate or deactivate step in navigation. It will be still reachable via button.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.activeStep(2, true) // activate third step</code></pre></td>
+                </tr>
+                <tr>
+                    <td>disableStep(index, value)</td>
+                    <td>Disable or enable step in wizard. It will be skipped if it is possible.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.disableStep(1) // disable second step
+sfw.disableStep(1, false) // enable second step</code></pre></td>
+                </tr>
+                <tr>
+                    <td>markStep(index, value)</td>
+                    <td>Add different style to specific step in navigation.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.markStep(0) // mark first step
+sfw.markStep(0, false) // unmark first step</code></pre></td>
+                </tr>
+                <tr>
+                    <td>navLabel(index, label)</td>
+                    <td>Set or get label for step with index (counting from zero)</td>
+                    <td>undefined | string</td>
+                    <td><pre><code>sfw.navLabel(1, 'summary')</code></pre></td>
+                </tr>
+                <tr>
+                    <td>navNumber(index, num)</td>
+                    <td>Set number or char for step with index (counting from zero). It can break the layout if you are not careful enough.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.navNumber(0, 'ok') // change number to 'ok'</code></pre></td>
+                </tr>
+                <tr>
+                    <td>nextLabel(label)</td>
+                    <td>Set label for next button. </td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.nextLabel('Go go go')</code></pre></td>
+                </tr>
+                <tr>
+                    <td>prevLabel(label)</td>
+                    <td>Set label for prev button. </td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.prevLabel('Do not do this')</code></pre></td>
+                </tr>
+                <tr>
+                    <td>finishLabel(label)</td>
+                    <td>Set label for finish button. </td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.finishLabel('Send it')</code></pre></td>
+                </tr>
+                <tr>
+                    <td>addSpinner(index)</td>
+                    <td>Adding animated spinner to specific step (number) or 'next' or 'prev'.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.addSpinner('next') // next button is spinning
+sfw.addSpinner('next', false) // back normal text</code></pre></td>
+                </tr>
+                <tr>
+                    <td>addStep(index, body)</td>
+                    <td>You can add whole step on index position. Body should contain stepNameElement.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.addStep(1, '&lt;legend>name&lt;/legend>body text..')
+// add step to second position</code></pre></td>
+                </tr>
+                <tr>
+                    <td>removeStep(index)</td>
+                    <td>Remove whole step on index position.</td>
+                    <td>undefined</td>
+                    <td><pre><code>sfw.removeStep(1)
+// remove step on second position</code></pre></td>
+                </tr>
+                <tr>
+                    <td>step(index)</td>
+                    <td>Return jQuery wrapped step by index.</td>
+                    <td>jQuery Object</td>
+                    <td><pre><code>sfw.step(2).addClass('my-css-class')
+// add css class to step wrapper</code></pre></td>
+                </tr>
+                <tr>
+                    <td>navStep(index)</td>
+                    <td>Return jQuery wrapped navigation step by index.</td>
+                    <td>jQuery Object</td>
+                    <td><pre><code>sfw.navStep(2).addClass('my-css-class')
+// add css class to navigation step</code></pre></td>
+                </tr>
+                <tr>
+                    <td>getActualStep()</td>
+                    <td>Return a number of actual active step.</td>
+                    <td>number</td>
+                    <td><pre><code>sfw.getActualStep()
+// return number of active step</code></pre></td>
+                </tr>
+            </table>
+			<h2 style="margin-top: 60px;">Advices</h2>
+            <h3>Using height: 'auto' and the wizard doesn't resize after ajax/validation/change-content</h3>
+			<p>
+				Don't forget to call method resfresh after some content of wizard is changed. For example if you use
+                parsley and height is set to 'auto', then call
+				function refresh after validation like:
+				<pre><code>var sfw = $("#wizard_example").stepFormWizard({
+	height: 'auto',
+	onNext: function(i, wizard) {
+		var valid = $('form', wizard).parsley().validate('block' + i);
+		sfw.refresh();
+		return valid;
+	},
+	onFinish: function(i, wizard) {
+		var valid = $('form', wizard).parsley().validate();
+		sfw.refresh();
+		return valid;
+});</code></pre>
+			</p>
+            <p>
+                If you use ajax request, then call method 'refresh' after ajax is done.
+				<pre><code>var sfw = $("#wizard_example").stepFormWizard({height: 'auto'});
+$.ajax({
+    url: "test.html"
+}).done(function() {
+    sfw.refresh();
+});</code></pre>
+            </p>
+            <h3>Modal window is broken</h3>
+            <p>
+                Your modal have to be outside of the wizard because themes are using position: relative and modal window
+                doesn't show properly inside the wizard. But of course you still can have a trigger of your modal inside
+                the wizard.
+                <pre><code>&lt;form id="wizard">
+    &lt;fieldset> ... trigger modalBox ... &lt;/fieldset>
+    &lt;fieldset> ... &lt;/fieldset>
+    &lt;fieldset> ... &lt;/fieldset>
+&lt;/form>
+&ltdiv id="modalBox">Content of your modal&lt;/div></code></pre>
+            </p>
+            <p>
+                If you have a reason why you can't render modal outside the wizard, then you have to put
+                your modal outside by javascript. <code>$('#modalBox').appendTo('body');</code>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">© <a href="http://ajoke.cz/wizard2">ajoke.cz/wizard2</a> 2014</p>
+    </div>
+</footer>
+
+</body>
+</html>

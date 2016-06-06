@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Step From Wizard - 14 - checkout</title>
+
+    <script src="plugins/jquery-2.1.4.min.js"></script>
+
+    <!-- bootstrap for better look example, but not necessary -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+
+    <!-- Step Form Wizard plugin -->
+    <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+    <script src="step-form-wizard/js/step-form-wizard.js"></script>
+
+    <!-- nicer scroll in steps -->
+    <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- validation library http://jqueryvalidation.org/ -->
+    <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+
+    <script>
+        var sfw;
+        $(document).ready(function () {
+            var form = $("#wizard_example");
+            form.validate();
+            sfw = $("#wizard_example").stepFormWizard({
+                theme: 'simple',
+                linkNav: 'prev',
+                height: 'auto',
+                onNext: function() {
+                    var valid = form.valid();
+                    // if use height: 'auto' call refresh metod after validation, because validation can change content
+                    sfw.refresh();
+                    return valid;
+                },
+                onFinish: function() {
+                    var valid = form.valid();
+                    // if use height: 'auto' call refresh metod after validation, because validation can change content
+                    sfw.refresh();
+                    return valid;
+                }
+            });
+
+            // init
+            sfw.disableStep(2);
+            sfw.activeNext(false, false);
+            $('#summary_billing').hide();
+            $('.card_sum').hide();
+
+            // ************ EVENTS ***************
+            // active next button after approval condition
+            $('#condition').on('click', function() {
+                if($(this).is(':checked')) {
+                    sfw.activeNext(true, true);
+                    $('#condition-text').removeClass('alert-danger');
+                } else {
+                    sfw.activeNext(false, false);
+                    $('#condition-text').addClass('alert-danger');
+                }
+            })
+
+            // if billing information is not same as shipping
+            $('#billing_same').click(function() {
+                if($(this).is(':checked')) {
+                    sfw.disableStep(2);
+                    $('#summary_billing').hide();
+                } else {
+                    sfw.disableStep(2, false);
+                    $('#summary_billing').show();
+                }
+            })
+
+            // if payment is via credit card, then add new step with additional information about card
+            $('.pay').on('change', function() {
+                if($('#card').is(':checked')) {
+                    sfw.addStep(4, $('#credit_step').html()); // you can also use ajax request for step
+                    $('.card_sum').show();
+                } else {
+                    sfw.removeStep(4);
+                    $('.card_sum').hide();
+                }
+            })
+            // ************ END EVENTS ***************
+        })
+        $(window).load(function () {
+            /* only if you want use mcustom scrollbar */
+            $(".sf-step").mCustomScrollbar({
+                theme: "dark-3",
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        });
+    </script>
+
+    <style>
+        pre {margin: 45px 0 60px;}
+        h2 {margin: 60px 0 30px 0;}
+        p {margin-bottom: 10px;}
+        .hide-step {display: none;}
+        .error {color: #c7254e;}
+        #condition-text {padding-left: 35px;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="site-index">
+        <div class="body-content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1>Example of checkout</h1>
+                    </div>
+
+                    <form id="wizard_example" action="">
+                        <fieldset>
+                            <legend>Personal information</legend>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="firstName">First name</label>
+                                        <input type="text" class="form-control" id="firstName"
+                                               name="firstName" placeholder="Your name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="secondName">Second name</label>
+                                        <input type="text" class="form-control" id="secondName"
+                                               name="secondName" placeholder="Your second name" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="email" class="form-control" id="email"
+                                               name="email" placeholder="Enter email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile">Mobile</label>
+                                        <input type="text" class="form-control" id="mobile"
+                                               name="mobile" placeholder="Your mobile phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    In publishing and graphic design, lorem ipsum is common placeholder text used to
+                                    demonstrate the graphic elements of a document or visual presentation, such as web
+                                    pages, typography, and graphical layout. It is a form of "greeking".
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pull-right">
+                                        <div class="checkbox">
+                                            <label>
+                                                <div id="condition-text" class="alert alert-success alert-danger">
+                                                    <input type="checkbox" id="condition" name="condition" value="yes" data-sf-text="Yes">
+                                                    Yes, yes I read condition!
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Shipping address</legend>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <input type="text" class="form-control" id="state"
+                                               name="state" placeholder="Enter code of state" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" id="city"
+                                               name="city" placeholder="Your city" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Billing address is same as shipping</label>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="billing_same" id="billing_same" value="1" checked /> Yes
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control" id="address"
+                                               name="address" placeholder="Your address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="zip">ZIP</label>
+                                        <input type="text" class="form-control" id="zip"
+                                               name="zip" placeholder="Your ZIP code" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Billing information</legend>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="b_state">State</label>
+                                        <input type="text" class="form-control" id="b_state"
+                                               name="b_state" placeholder="Enter code of state" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="b_city">City</label>
+                                        <input type="text" class="form-control" id="b_city"
+                                               name="b_city" placeholder="Your city" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="b_address">Address</label>
+                                        <input type="text" class="form-control" id="b_address"
+                                               name="b_address" placeholder="Your address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="b_zip">ZIP</label>
+                                        <input type="text" class="form-control" id="b_zip"
+                                               name="b_zip" placeholder="Your ZIP code" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    In publishing and graphic design, lorem ipsum is common placeholder text used to
+                                    demonstrate the graphic elements of a document or visual presentation, such as web
+                                    pages, typography, and graphical layout. It is a form of "greeking".
+                                </div>
+                                <div class="col-lg-12">
+                                    In publishing and graphic design, lorem ipsum is common placeholder text used to
+                                    demonstrate the graphic elements of a document or visual presentation, such as web
+                                    pages, typography, and graphical layout. It is a form of "greeking".
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Payment</legend>
+                            In publishing and graphic design, lorem ipsum is common placeholder text used to demonstrate
+                            the graphic elements of a document or visual presentation, such as web pages, typography,
+                            and graphical layout. It is a form of "greeking".
+                            Even though using "lorem ipsum" often arouses curiosity due to its resemblance to classical
+                            Latin, it is not intended to have meaning. Where text is visible in a document, people tend
+                            to focus on the textual content rather than upon overall presentation, so publishers use
+                            lorem ipsum when displaying a typeface or design in order to direct the focus to
+                            presentation. "Lorem ipsum" also approximates a typical distribution of letters in English.
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="pay" name="payment" value="cash" checked data-sf-text="Cash on delivery">
+                                    cash on delivery
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="pay" id="card" name="payment" value="card" data-sf-text="Credit card">
+                                    credit card
+                                </label>
+                            </div>
+                        </fieldset>
+                        <fieldset data-sf-step="summary">
+                            <legend>Summary</legend>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <h3>Personal information</h3>
+                                    <table>
+                                        <tr>
+                                            <td style="width: 150px;">First name: </td>
+                                            <td>{{firstName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Second name: </td>
+                                            <td>{{secondName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email: </td>
+                                            <td>{{email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mobile: </td>
+                                            <td>{{mobile|not set}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h3>Shipping address</h3>
+                                    <table>
+                                        <tr>
+                                            <td style="width: 150px;">State: </td>
+                                            <td>{{state}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>City: </td>
+                                            <td>{{city}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address: </td>
+                                            <td>{{address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZIP: </td>
+                                            <td>{{zip}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-4" id="summary_billing">
+                                    <h3>Billing address</h3>
+                                    <table>
+                                        <tr>
+                                            <td style="width: 150px;">State: </td>
+                                            <td>{{b_state}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>City: </td>
+                                            <td>{{b_city}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address: </td>
+                                            <td>{{b_address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZIP: </td>
+                                            <td>{{b_zip}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4" id="summary_billing">
+                                    <h3>Payment summary</h3>
+                                    <table>
+                                        <tr>
+                                            <td style="width: 180px;">Payment: </td>
+                                            <td>{{payment}}</td>
+                                        </tr>
+                                        <tr class="card_sum">
+                                            <td>Card number: </td>
+                                            <td>{{credit_num}}</td>
+                                        </tr>
+                                        <tr class="card_sum">
+                                            <td>CVV: </td>
+                                            <td>{{cvv}}</td>
+                                        </tr>
+                                        <tr class="card_sum">
+                                            <td>Expiration date: </td>
+                                            <td>{{expiration}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <noscript>
+                                <input class="nocsript-finish-btn sf-right nocsript-sf-btn" type="submit"
+                                       name="no-js-clicked" value="finish"/>
+                            </noscript>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div id="credit_step" class="hide-step">
+                <legend>Credit card</legend>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="credit_num">Card number</label>
+                            <input type="text" class="form-control" id="credit_num"
+                                   name="credit_num" placeholder="Enter 12 digit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiration">Expiration</label>
+                            <input type="text" class="form-control" id="expiration"
+                                   name="expiration" placeholder="Expiration date" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" class="form-control" id="cvv"
+                                   name="cvv" placeholder="CVV from back your card" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <footer class="footer">
+                <div class="container">
+                    <p class="pull-left">© ajoke.cz/wizard 2015</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
