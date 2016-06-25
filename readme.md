@@ -2,6 +2,9 @@
 
 This is a collection of packages and single javascript files we use internally that lack an npm or bower insta$
 
+### Install
+bower install jwg-dilithium --save
+
 #### Packages and Scripts Included
 
 ##### Form Wizard:
