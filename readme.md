@@ -16,6 +16,9 @@ A commercial package ([http://codecanyon.net/item/step-form-wizard/8591111]) for
 ##### jQuery Validation
 The jQuery standard validation library.
 
+##### jQuery UI
+The jQuery UI library using the Dark Hive theme.
+
 ##### A Countdown Clock
 Set a date in your ready function and get a countdown.
 
