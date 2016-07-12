@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18040cb4-9cb1-41e6-bd67-1efcf311e616" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-    </list>
+    <list default="true" id="18040cb4-9cb1-41e6-bd67-1efcf311e616" name="Default" comment="" />
     <ignored path="dilithium.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -126,12 +124,12 @@
       <option name="presentableId" value="Default" />
       <updated>1466882842964</updated>
       <workItem from="1466882844181" duration="62000" />
-      <workItem from="1467121212873" duration="70000" />
+      <workItem from="1467121212873" duration="123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132000" />
+    <option name="totallyTimeSpent" value="185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="838" extended-state="0" />
