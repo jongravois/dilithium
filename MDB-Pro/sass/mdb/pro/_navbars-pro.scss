@@ -1,0 +1,129 @@
+// NAVBARS PRO
+// Scrolling navbar
+@media only screen and (min-width: 768px) {
+    .scrolling-navbar {
+        -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        transition: background .5s ease-in-out, padding .5s ease-in-out;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        .navbar-nav > li {
+            transition-duration: 1s;
+        }
+    }
+    .top-nav-collapse {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+}
+ 
+.scrolling-navbar {
+    z-index: 100;
+}
+
+//Double Navigation
+.double-nav {
+    padding-left: 240px;
+    padding-top: 15px;
+    padding-bottom: 6px;
+    .nav-counter {
+        position: absolute;
+        margin-left: -10px;
+        margin-top: -5px;
+        background-color: red;
+        color: #fff;
+        padding: 1px 5px;
+        font-size: 10px;
+        z-index: 222;
+        @include border-radius(10rem);
+    }
+    .button-collapse {
+        position: absolute;
+        padding: 8px 20px;
+        font-size: 1.5rem;
+        color: #fff;
+    }
+    @media only screen and (min-width: 992px) {
+        .button-collapse {
+            display: none;
+        }
+    }
+    .breadcrumb-dn {
+        float: left;
+        color: #fff;
+        padding-top: 10px;
+        padding-left: 10px;
+        font-size: 1rem;
+    }
+    @media only screen and (max-width: 993px) {
+        .breadcrumb-dn {
+            display: none;
+        }
+    }
+    .nav-icons {
+        padding: 0;
+        margin: 0;
+        text-align: right;
+        li {
+            display: inline-block;
+            text-align: center;
+            a {
+                color: #fff;
+                font-size: 0.7rem;
+                margin-right: 3px;
+                .fa {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+    &.top-nav-collapse {
+        padding-top: 8px;
+        padding-bottom: 0;
+    }
+    @media only screen and (max-width: 992px) {
+        &.navbar-fixed-top {
+            position: relative;
+        }
+        .button-collapse {
+            font-size: 1.2rem;
+            padding-top: 7px;
+        }
+        .nav-icons {
+            li {
+                a {
+                    font-size: 0.7rem;
+                    margin-right: 3px;
+                    .fa {
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width: 992px) {
+    .double-nav {
+        padding-left: 0;
+        padding-top: 8px;
+        padding-bottom: 0px;
+    }
+}
+
+// Navbar collapsible
+.navbar {
+    .navbar-desktop {
+        @media (max-width: 992px) {
+            display: none;
+        }
+    }
+    .button-collapse {
+        @media (min-width: 993px) {
+            display: none;
+        }
+    }
+}
