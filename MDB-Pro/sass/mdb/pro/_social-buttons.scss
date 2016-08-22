@@ -16,7 +16,7 @@
     .btn {
         margin-left: 9px;
     }
-}
+} 
 
 
 /* Buttons */
@@ -125,6 +125,14 @@
     }
 }
 
+.btn-dribbble {
+    background-color: $drib-color;
+    &:hover,
+    &:focus {
+        background-color: lighten($drib-color, 5%);
+    }
+}
+
 
 /* Icons */
 
@@ -132,12 +140,6 @@
     padding: 0.5rem;
     margin: 0.5rem;
     font-size: 1.5rem;
-    .fa {
-        @include transition-duration(0.2s);
-    }
-    &:hover .fa {
-        @include transform(scale(1.2));
-    }
 }
 
 .fb-ic {
@@ -177,6 +179,14 @@
     &:hover,
     &:focus {
         color: $yt-color;
+    }
+}
+
+.dribbble-ic {
+    color: $drib-color;
+    &:hover,
+    &:focus {
+        color: $drib-color;
     }
 }
 
@@ -225,6 +235,14 @@
     &:hover,
     &:focus {
         color: $comm-color;
+    } 
+}
+
+.drib-ic {
+   color: $drib-color;
+    &:hover,
+    &:focus {
+        color: $drib-color;
     } 
 }
 

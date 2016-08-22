@@ -231,6 +231,7 @@
     @include transform(scale(.75));
     background: #0089ec;
     color: #ffffff;
+    @extend .z-depth-1-half;
 }
 
 .picker__day--disabled,

@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE: 4.0.0, MDB PRO 4.0.0 
+ * Version: MDB PRO 4.1.0 
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -29,7 +29,7 @@
 @import "mdb/free/global"; 
   
 // MDB Free  
-@import "mdb/free/roboto"; 
+@import "mdb/free/roboto";
 @import "mdb/free/typography";
 @import "mdb/free/animations";
 @import "mdb/free/waves";
@@ -45,6 +45,7 @@
 // MDB Premium  
 @import "mdb/pro/forms-pro"; 
 @import "mdb/pro/tabs"; 
+@import "mdb/pro/msc"; 
 @import "mdb/pro/progress"; 
 @import "mdb/pro/accordion"; 
 @import "mdb/pro/buttons-pro"; 
@@ -59,15 +60,25 @@
 @import "mdb/pro/toasts"; 
 @import "mdb/pro/scrollspy";   
 @import "mdb/pro/charts-pro";   
+@import "mdb/pro/animations-pro";   
+@import "mdb/pro/scrollbar";   
+@import "mdb/pro/ecommerce";
+@import "mdb/pro/skins"; 
 
-// SETS
-@import "mdb/pro/ecommerce";   
-@import "mdb/pro/blog";   
-
-// DATE & TIME PICKERS
+// DATE & TIME PICKERS 
 @import "mdb/pro/date_picker/default.scss";
 @import "mdb/pro/date_picker/default.date.scss";
-@import "mdb/pro/date_picker/default.time.scss";  
+@import "mdb/pro/date_picker/default.time.scss"; 
+
+// SECTIONS
+@import "mdb/pro/sections/blog"; 
+@import "mdb/pro/sections/magazine"; 
+@import "mdb/pro/sections/pricing";   
+@import "mdb/pro/sections/testimonials";    
+@import "mdb/pro/sections/features";    
+@import "mdb/pro/sections/team";    
+@import "mdb/pro/sections/form-sets";    
+@import "mdb/pro/sections/templates";    
   
  
 

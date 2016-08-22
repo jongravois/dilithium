@@ -1,42 +1,6 @@
 /*********************
  Modals
 **********************/
-
-// Modal Bottom Sheet Style
-.modal.bottom-sheet {
-    top: auto;
-    bottom: -100%;
-    margin: 0;
-    width: 100%;
-    border-radius: 0;
-    will-change: bottom, opacity;
-    background-color: #fff;
-}
-
-.bottom-sheet .modal-content {
-    box-shadow: none;
-    border-bottom: none;
-}
-
-.bottom-sheet .modal-footer {
-    margin-bottom: 30px;
-    border-top: 0;
-}
-
-.lean-overlay {
-    position: fixed;
-    z-index: 999;
-    top: -100px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 125%;
-    width: 100%;
-    background: #000;
-    display: none;
-    will-change: opacity;
-}
-
 // Modal Login & Modal Register
 .modal-ext .modal-content {
     .modal-header {
@@ -87,6 +51,36 @@
 }
 
 // Modals normalize 
-.modal .modal-body .cf-phone {
+.cf-phone {
     margin-left: 7px;
+}
+
+// Container that the modal scrolls within
+.modal-test {
+    position: absolute;
+    top: 70%;
+    right: 80%;
+    // Shell div to position the modal with bottom padding
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+    }
+    // Actual modal
+    .modal-content {
+     @extend .z-depth-3;
+        border: none;
+        .modal-header {
+            background-color: blue;
+        }
+    }
+    // Modal background
+
+    
+   
+}
+
+.modal-test.fade:not(.in) .modal-dialog {
+    -webkit-transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
 }

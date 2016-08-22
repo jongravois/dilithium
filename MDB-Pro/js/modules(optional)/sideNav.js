@@ -34,7 +34,7 @@
 
         // If fixed sidenav, bring menu out
         if (menu_id.hasClass('fixed')) {
-            if (window.innerWidth > 992) {
+            if (window.innerWidth > 1440) {
               menu_id.css('transform', 'translateX(0)');
             }
           }
@@ -42,7 +42,7 @@
         // Window resize to reset on large screens fixed
         if (menu_id.hasClass('fixed')) {
           $(window).resize( function() {
-            if (window.innerWidth > 992) {
+            if (window.innerWidth > 1440) {
               // Close menu if window is resized bigger than 992 and user has fixed sidenav
               if ($('#sidenav-overlay').length != 0 && menuOut) {
                 removeMenu(true);

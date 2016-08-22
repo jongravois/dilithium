@@ -48,7 +48,7 @@
     .card-block {
         .card-title,
         .card-text {
-            padding-bottom: 0.6rem; 
+            padding-bottom: 0.6rem;
             border-bottom: 1px solid #e0e0e0;
         }
     }
@@ -67,7 +67,8 @@
 }
 
 // Quick look modal
-.ql-modal, .product-panel {
+.ql-modal,
+.product-panel {
     .modal-dialog {
         width: auto;
         margin: 2rem;
@@ -92,14 +93,15 @@
             }
             .price-after {
                 font-size: 1.7rem;
-            color: green;
+                color: green;
             }
         }
     }
-    .media img { 
+    .media img {
         max-width: 60px;
     }
 }
+
 @media (max-width: 1200px) {
     .ql-modal {
         .modal-dialog {
@@ -121,23 +123,25 @@
         bottom: 3rem;
         width: 100%;
         text-align: center;
-        padding: 1.5rem;
+        padding: 1.2rem;
         &.dark {
             background-color: $rgba-black-strong;
+            a p {
+                color: #eeeeee;
+            }
         }
         &.light {
             background-color: $rgba-white-strong;
-            a {
-                color: black;
+            a p {
+                color: #424242;
             }
         }
         a {
-            color: #fff;
             p {
                 padding: 0;
                 margin: 0;
                 letter-spacing: 4px;
-                @extend .h4-responsive;
+                font-size: 1rem;
             }
         }
     }
@@ -153,55 +157,6 @@
         .total {
             text-transform: uppercase;
             font-weight: 600;
-        }
-    }
-}
-
-//Pricing Card
-.pricing-card {
-    text-align: center;
-    .price {
-        position: relative;
-        padding-top: 3rem;
-        color: #fff;
-        h1 {
-            font-size: 5rem;
-            padding: 1.5rem;
-            &:before {
-                content: "$";
-                font-size: 30px;
-                position: absolute;
-                margin-left: -1.2rem;
-                margin-top: 0.7rem;
-            }
-            &:after {
-                content: "/mo";
-                font-size: 30px;
-                position: absolute;
-                margin-top: 3rem;
-            }
-        }
-        .version {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            background-color: $rgba-black-light;
-            padding: 1rem;
-            @extend .z-depth-1;
-            h5 {
-                padding: 0;
-                margin: 0;
-            }
-        }
-    }
-    ul {
-        border-bottom: 1px solid #e0e0e0;
-        padding: 0.6rem;
-        .fa-check {
-            color: green;
-        }
-        .fa-times {
-            color: red;
         }
     }
 }

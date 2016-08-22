@@ -27,17 +27,8 @@
     }
     // Review card
     .rating {
-        margin-top: -16px;
-        margin-left: 20px;
-        position: absolute;
-        background-color: $stylish-color;
-        padding: 0.6rem 1.5rem;
-        &:hover {
-            .fa {
-                color: gold;
-                transition: all 0.4s linear;
-            }
-        }
+        @extend .inline-ul;
+        color: #ffa000  ;
     }
     .btn-action {
         margin: -23px 20px;
@@ -164,28 +155,34 @@
     &.ovf-hidden {
         overflow: hidden;
     }
-}
-
-// Testimonial card
-.testimonial-card {
-    .card-up {
-        overflow: hidden;
-        height: 120px;
-    }
-    .avatar {
-        border-radius: 50%;
-        height: 120px;
-        width: 120px;
-        margin: -65px auto 0;
-        overflow: hidden;
-    }
-    .avatar img {
-        border: 5px solid #fff;
-        background: none repeat scroll 0 0 #FFFFFF;
-        width: 100%;
-    }
-    .card-block {
-        text-align: center;
+    .card-footer {
+        font-size: 1.3rem;
+        background-color: transparent;
+        padding-bottom: 2rem;
+        .left {
+            float: left;
+            .discount {
+                text-decoration: line-through;
+                color: #9e9e9e;
+                font-size: 1.1rem;
+            }
+        }
+        .right {
+            float: right;
+            display: flex;
+            a {
+                color: #9e9e9e;
+                margin-left: 1rem;
+                @include transition (0.4s);
+                &:hover {
+                    color: #d50000;
+                    @include transition (0.4s);
+                }
+                &.active {
+                    color: #d50000;
+                }
+            }
+        }
     }
 }
 
@@ -312,5 +309,76 @@
                 margin-right: 3px;
             }
         }
+    }
+}
+
+// Card overlay
+.card-overlay {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 1.5rem;
+    border-radius: 2px;
+    @extend .z-depth-2;
+    @extend .flex-center;
+    p {
+        margin-bottom: 1rem;
+    }
+}
+
+.section-heading {
+    text-align: center;
+    h1 {
+        @extend .h1-responsive;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+    p {
+        margin-bottom: 3rem;
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+}
+
+.card-cascade {
+    display: inline-block;
+    .view {
+        @extend .z-depth-2;
+        @include border-radius (4px);
+    }
+    &.narrower {
+        margin-top: 20px;
+        .view {
+            margin-left: 4%;
+            margin-right: 4%;
+            margin-top: -20px;
+        }
+    }
+    &.wider {
+         @extend .z-depth-0;
+        .card-block {
+            margin-left: 4%;
+            margin-right: 4%;
+             @extend .z-depth-1;
+        }
+    }
+}
+
+.card-cascade-2 {
+    display: inline-block;
+    @extend .z-depth-0;
+    .view {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: -20px;
+        @include border-radius (4px);
+        @extend .z-depth-2;
+    }
+    .card-block {
+        margin-left: 10px;
+        margin-right: 10px;
+        ;
+        @extend .z-depth-1;
     }
 }

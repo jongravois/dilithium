@@ -1,12 +1,23 @@
 // NAVBARS
 .navbar {
     form {
-            float: right;
+        float: right;
         input {
             margin: 0;
             height: 1rem;
             margin-right: 5px;
+            margin-left: 8px;
             margin-bottom: 1px;
+        }
+    }
+    .dropdown .dropdown-menu a {
+        color: #000!important;
+    }
+    .navbar-nav .nav-item {
+        margin-left: 0;
+        a {
+            padding-right: 8px;
+            padding-left: 8px;
         }
     }
     .navbar-toggler {
@@ -19,26 +30,45 @@
         margin: 0;
         background-color: inherit;
     }
+    .nav-flex-icons {
+        float: right;
+        display: flex;
+    }
     &.navbar-dark {
-        .breadcrumb {
+        .breadcrumb,
+        .navbar-nav .nav-item {
             a {
                 color: #fff;
+                transition: .35s;
+                &:hover {
+                    transition: .35s;
+                    color: rgba(255, 255, 255, .75);
+                }
             }
-            .active {
-                color: #90caf9;
-            } 
+            &.active {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
         }
         .navbar-toggler {
             color: #fff;
         }
+        .nav-link {
+            color: #fff;
+        }
     }
     &.navbar-light {
-        .breadcrumb {
+        .breadcrumb,
+        .nav-item {
             a {
                 color: #000;
+                transition: .35s;
+                &:hover {
+                    transition: .35s;
+                    color: #212121;
+                }
             }
-            .active {
-                color: #757575;
+            &.active {
+                background-color: rgba(158, 158, 158, 0.2) ;
             }
         }
         .navbar-toggler {
@@ -49,6 +79,7 @@
         .navbar-toggleable-xs {
             .navbar-brand {
                 float: none;
+                margin-left: 8px;
             }
             ul {
                 float: none;
