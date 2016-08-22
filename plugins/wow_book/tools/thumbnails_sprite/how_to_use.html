@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+	   Remove this if you use the .htaccess -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="Marcio Aguiar">
+
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		body {
+			font-family:"Lucida Grande",Helvetica,Arial,sans-serif;
+		}
+	</style>
+</head>
+<body>
+<h1>About Wowbook thumbnails sprite generator</h1>
+<p>
+This is a simple script that helps you to create thumbnails sprite for wowbook. For more information about "thumbnails sprite" read the section "Thumbnails" in the plugin documentation.
+</p>
+
+
+<h1>Limitations</h1>
+<p>
+This tool will work only with "image only" books, ie, books where each page is a img tag that fills the whole page.
+Works with image only books created manually or using the attribute "data-image" or the configuration option "images".
+</p>
+<p>
+This tool was tested only with the most recent version of Firefox and Chrome.
+</p>
+
+
+<h1>How to use</h1>
+
+<p>
+	Include the script "thumbnails_generator.js" in the webpage that contains the book.
+</p>
+
+<p>
+	To determine the size of the generated thumbnails, the tool will use the configuration options "thumbnailWidth" and "thumbnailHeight". You can also use the option "thumbnailScale".
+</p>
+
+<code>
+<pre>
+	&lt;script src="thumbnails_generator.js"&gt;&lt;/script&gt;
+</pre>
+</code>
+
+<p>
+	Open the webpage in your browser. On the top left corner of the page, you're gonna see a white box with a button "Generate thumbnails". Click it.
+</p>
+
+<p>
+	Wait for the tool to load all the images in the book. When all the pages are loaded click on the link "Click to download thumbnails". Generate the thumbnails can take some time depending on the how much images the tool has to process.
+</p>
+
+<p>
+	After all the images are processed and the thumbnails sprite image is done, the browser will ask where do you want to save the image file. Save it on your webpage directory.
+</p>
+
+<p>
+	Set the configuration option "thumbnailsSprite" to point the image you just downloaded.
+	<code><pre>
+	$('#book-element-id').wowBook({
+	   height : 500,
+	   width  : 600
+	   // other configuration options
+	   thumbnailsSprite: "path/to/the/image/file.png"
+	});
+	</pre></code>
+</p>
+
+<p>
+	Remove the script "thumbnails_generator.js" from your page.
+</p>
+
+<p>
+	That's it. If you have any problems/questions please contact me at <a href="http://codecanyon.net/user/maguiar01">my codecanyon's profile page</a>.
+</p>
+</body></html>
