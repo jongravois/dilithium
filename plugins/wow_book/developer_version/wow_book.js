@@ -2,7 +2,7 @@
  * @name wowBook
  *
  * @author Marcio Aguiar
- * @version 1.3.0
+ * @version 1.3.1
  * @requires jQuery v1.7.0+
  *
  * Copyright 2010 Marcio Aguiar. All rights reserved.
@@ -16,7 +16,7 @@ $.wowBook = function(elem){
     return $(elem).data("wowBook");
 };
 
-$.wowBook.version = "1.3.0";
+$.wowBook.version = "1.3.1";
 $.wowBook.support = {};
 
 $.fn.wowBook = function(options) {
@@ -562,7 +562,7 @@ wowBook.prototype = {
 
 		this.resizeHandles();
 		if (this.opts.onResize) this.opts.onResize(this)
-		if ( this.pdf ) this.pdfUpdateRender();
+		if ( this.pdfDoc ) this.pdfUpdateRender();
 	}, // scale
 
 
@@ -691,8 +691,15 @@ wowBook.prototype = {
 		rightHalf.parent().data("src", rightHalf.data("src") );
 		leftHalf.parent().data("image", leftHalf.data("image") );
 		rightHalf.parent().data("image", rightHalf.data("image") );
-		var leftPage = this.insertPage(leftHalf.parent(), true);
-		var rightPage = this.insertPage(rightHalf.parent(), true);
+
+		if (!this.rtl) {
+			var leftPage = this.insertPage(leftHalf.parent(), true);
+			var rightPage = this.insertPage(rightHalf.parent(), true);
+		} else {
+			var rightPage = this.insertPage(rightHalf.parent(), true);
+			var leftPage = this.insertPage(leftHalf.parent(), true);
+		}
+
 		if (leftPage) leftPage.otherHalf = rightPage;
 		if (rightPage) rightPage.otherHalf = leftPage;
 		if (!$.wowBook.support.boxSizing) {
@@ -1108,7 +1115,9 @@ wowBook.prototype = {
 		this.toggleControl("last",  showingLastPage);
 		var empty = !this.pages.length;
 		this.toggleControl( "left",  empty || (!this.rtl ? showingFirstPage : showingLastPage) );
+		this.toggleControl( "lastLeft",  empty || (!this.rtl ? showingFirstPage : showingLastPage) );
 		this.toggleControl( "right", empty || (!this.rtl ? showingLastPage : showingFirstPage) );
+		this.toggleControl( "lastRight", empty || (!this.rtl ? showingLastPage : showingFirstPage) );
 
 		// onShowPage callback
 		var onShowPage = this.onShowPage;
@@ -1445,7 +1454,6 @@ wowBook.prototype = {
 		    tan_a    = Math.tan(angle),
 		    ar       = angle,
 		    angle    = angle*180/Math.PI;
-
 
 		var	bc  = { x : cx-halfWidth, y: halfHeight-cy },
 			bc2 = rotatePoint(bc, ar);
@@ -4304,7 +4312,7 @@ wowBook.prototype = {
 
 		if ( $(controls.share).length ) this.createShareControl( $(controls.share) );
 
-		var controlList = ("zoomIn zoomOut zoomReset left right next back first last slideShow flipSound "
+		var controlList = ("zoomIn zoomOut zoomReset left lastLeft right lastRight next back first last slideShow flipSound "
 		                  +"thumbnails fullscreen toc currentPage pageCount").split(" "),
 		    controlName;
 		for(var i=0,l=controlList.length;i<l;i++) {
