@@ -1,25 +1,8 @@
-Material Design for Bootstrap
+Warning! 
 
-version: MDB PRO 4.1.1
+SASS files are optional! They are not required to start working with MDB.
 
-Documentation:
-http://mdbootstrap.com/
+You don't need to include them in your project.
 
-Getting started:
-http://mdbootstrap.com/getting-started/
-
-Tutorials:
-MDB-Bootstrap: http://mdbootstrap.com/bootstrap-tutorial/
-MDB-Wordpress: http://mdbootstrap.com/wordpress-tutorial/
-
-Templates:
-http://mdbootstrap.com/templates/
-
-License:
-http://mdbootstrap.com/license/
-
-Support:
-http://mdbootstrap.com/forums/forum/support/
-
-Contact:
-office@mdbootstrap.com
+SASS are inteded for developers who are willing to modify MDB CSS code via SASS files. 
+All other users should include either mdb.css or mdb.min.css and skip SASS files.
